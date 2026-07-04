@@ -1,6 +1,8 @@
-Markdown
+Here is the corrected markdown code. The issue in your previous file was a missing or unclosed code block wrapper, which accidentally pushed all your text into the background box.
 
+Copy and paste this exact code into your **`README.md`** file to fix the layout:
 
+```markdown
 # Telegram Canteen Automation Bot
 
 A lightweight, state-driven Telegram bot designed to automate food ordering, menu distribution, and secure counter pickup verification for educational institutes or corporate canteens. Built using Python, the `pyTelegramBotAPI` framework, and an embedded SQLite database layout.
@@ -28,58 +30,76 @@ smartcanteenbot/
 │
 ├── simple_canteen_bot.db # Created automatically on execution (SQLite DB)
 └── static/               # Created automatically on execution (Stores active QR images)
-⚙️ Setup and Installation
-1. Prerequisite Installations
+
+```
+
+---
+
+## ⚙️ Setup and Installation
+
+### 1. Prerequisite Installations
+
 Ensure your development environment contains Python 3.10+ installed. Install the explicit dependencies using pip:
 
-Bash
-
-
+```bash
 pip install pyTelegramBotAPI python-dotenv qrcode pillow
-2. Register Your Bot
-Search for @BotFather on Telegram.
 
-Initialize with /newbot and follow the structural naming wizard.
+```
 
-Secure your generated HTTP API Bot Token.
+### 2. Register Your Bot
 
-3. Identify Admin Chat IDs
-Canteen staff require explicit command permissions. Find your numeric unique chat signature by messaging @userinfobot on Telegram.
+1. Search for `@BotFather` on Telegram.
+2. Initialize with `/newbot` and follow the structural naming wizard.
+3. Secure your generated **HTTP API Bot Token**.
 
-4. Configure Environment Variables
-Create a file named .env in the root directories of the project mapping your credentials:
+### 3. Identify Admin Chat IDs
 
-Code snippet
+Canteen staff require explicit command permissions. Find your numeric unique chat signature by messaging `@userinfobot` on Telegram.
 
+### 4. Configure Environment Variables
 
+Create a file named `.env` in the root directories of the project mapping your credentials:
+
+```env
 BOT_TOKEN=1234567890:ABCdefGhIJKlmNoPQRsTUVwxyZ
 ADMIN_CHAT_IDS=987654321,555444333
-(Separate multiple administrative personnel signatures using commas).
 
-🚀 Execution
+```
+
+*(Separate multiple administrative personnel signatures using commas).*
+
+---
+
+## 🚀 Execution
+
 Initialize the backend wrapper by booting your primary runtime entry file:
 
-Bash
-
-
+```bash
 python app.py
+
+```
+
 Upon verification, the system creates the database mappings, feeds initial preset tokens (Samosa, Tea, Coffee, Vada Pav), flushes active webhooks to bypass error 409 boundaries, and opens long-polling pipelines.
 
-📋 Operational Workflow
-Student User Flow
-Initiate: Student messages menu, hi, or /start.
+---
 
-Select: User targets key codes using format: <item_id> <quantity> (e.g., replying 1 2 commands two units of ID 1).
+## 📋 Operational Workflow
 
-Confirm: Bot creates an explicit summary transaction tracking state as pending. Student replies confirm or cancel.
+### Student User Flow
 
-Collect: Bot renders the transaction status to confirmed, notifies management channels, and posts a scannable token for counter processing.
+* **Initiate:** Student messages `menu`, `hi`, or `/start`.
+* **Select:** User targets key codes using format: `<item_id> <quantity>` (e.g., replying `1 2` commands two units of ID 1).
+* **Confirm:** Bot creates an explicit summary transaction tracking state as `pending`. Student replies `confirm` or `cancel`.
+* **Collect:** Bot renders the transaction status to `confirmed`, notifies management channels, and posts a scannable token for counter processing.
 
-Admin Command Terminal
-Users whose Chat IDs reside in your .env register can interact with the bot using administrative shortcuts directly:
+### Admin Command Terminal
 
-admin menu — Audits the total items cataloged inside the relational tracking file.
+Users whose Chat IDs reside in your `.env` register can interact with the bot using administrative shortcuts directly:
 
-add <item name> <price> — Extends active selections (e.g., add Cold Coffee 35).
+* `admin menu` — Audits the total items cataloged inside the relational tracking file.
+* `add <item name> <price>` — Extends active selections (e.g., `add Cold Coffee 35`).
+* `delete <id>` — Performs soft-deletions changing row visibility fields to false (`available = 0`).
 
-delete <id> — Performs soft-deletions changing row visibility fields to false (available = 0).
+```
+
+```
