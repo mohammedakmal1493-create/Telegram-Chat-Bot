@@ -1,7 +1,3 @@
-Here is the corrected markdown code. The issue in your previous file was a missing or unclosed code block wrapper, which accidentally pushed all your text into the background box.
-
-Copy and paste this exact code into your **`README.md`** file to fix the layout:
-
 ```markdown
 # Telegram Canteen Automation Bot
 
